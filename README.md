@@ -1,4 +1,4 @@
-## Senary Clock!
+## [Senary Clock!](https://dkallen78.github.io/senary-clock/senaryClock.html)
 
 This is the clock no one asked for!
 
