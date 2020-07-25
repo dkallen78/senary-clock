@@ -16,6 +16,10 @@ The numbers we're used to are in base-10, that is, every digit of our number has
 
 In a senary system there are only 6 possible digits for our place values: 0 - 6. In this system the far right digit is multiplied by 6⁰ to determine its value. The next digits are determined by multiplying them by 6¹, 6², and so on. So to determine the value of the senary number 234 we apply the same process as we did with the decimal numbers, only now multiplying by powers of 6. **234** is equal to (**2** × 6²) + (**3** × 6¹) + (**4** × 6⁰) → (**2** × 36) + (**3** × 6) + (**4** × 1) → 72 + 18 + 4 → 94.  
 
+### Why is it smoother than butter?
+
+I'm glad you asked. It's thanks to the magic of refreshing the position of the hands 100 times a second. I calculate the position of the hands down to the 10 millionth of a pixel just for funsies! 
+
 ## Updates
 
 ### 2020.07.23
