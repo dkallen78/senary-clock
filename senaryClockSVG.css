@@ -56,6 +56,7 @@ body {
 .hands {
   rx: .5vh;
   ry: .5vh;
+  fill: url("#handGradient");
   filter: drop-shadow(0 .5vh .05vh black);
   transform-origin: 45vh 45vh;
 }
