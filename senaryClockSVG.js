@@ -97,14 +97,27 @@ function makeHand(parent, id) {
   gradient.id = "handGradient";
   gradient.setAttribute("gradientTransform", "rotate(90)");
 
-  addStop(gradient, "0%", "dodgerBlue");
-  addStop(gradient, "100%", "aqua");
+  /*addStop(gradient, "0%", "dodgerBlue");
+  addStop(gradient, "100%", "aqua");*/
+
+  addStop(gradient, "0%", "orangered");
+  addStop(gradient, "100%", "gold");
 
   defs.appendChild(gradient);
   parent.appendChild(defs);
   parent.appendChild(hand);
 
   hand.style.fill = "url('#handGradient')";
+  return hand;
+}
+
+function makeHandShadow(parent, id) {
+  let hand = document.createElementNS(svgNS, "rect");
+  hand.id = id;
+  hand.classList.add("handShadows");
+
+  parent.appendChild(hand);
+
   return hand;
 }
 
@@ -156,10 +169,23 @@ svg.appendChild(circle);
 makeEllipses(svg, 24);
 makeNumbers(svg, 24);
 
+let defs = document.createElementNS(svgNS, "defs");
+svg.appendChild(defs);
+let filter = document.createElementNS(svgNS, "filter");
+defs.appendChild(filter);
+filter.id = "blur";
+let blur = document.createElementNS(svgNS, "feGaussianBlur");
+filter.appendChild(blur);
+blur.setAttribute("in", "SourceGraphic");
+blur.setAttribute("stdDeviation", "2");
+
+let sHandShadow = makeHandShadow(svg, "sHandShadow");
 let sHand = makeHand(svg, "sHand");
 
+let mHandShadow = makeHandShadow(svg, "mHandShadow");
 let mHand = makeHand(svg, "mHand");
 
+let hHandShadow = makeHandShadow(svg, "hHandShadow");
 let hHand = makeHand(svg, "hHand");
 
 makeCenter(svg);
@@ -168,13 +194,11 @@ clock.appendChild(svg);
 
 let numbers = document.getElementsByClassName("numbers");
 let digitalTime = document.createElementNS(svgNS, "text");
-digitalTime.setAttribute("textLength", "40%");
+digitalTime.setAttribute("textLength", "50%");
 svg.appendChild(digitalTime);
 
 //
 //Will update the clock face at 100Hz
-
-
 let hourCheck = null;
 
 let refreshInterval = setInterval(function() {
@@ -187,14 +211,17 @@ let refreshInterval = setInterval(function() {
   let msSeconds = (time.getSeconds() * 1000) + time.getMilliseconds();
   let sAngle = msSeconds * 0.006;
   sHand.style.transform = "rotate(" + sAngle + "deg)";
+  sHandShadow.style.transform = "rotate(" + sAngle + "deg)";
 
   let msMinutes = (time.getMinutes() * 60000) + msSeconds;
   let mAngle = msMinutes * 0.0001;
   mHand.style.transform = "rotate(" + mAngle + "deg)";
+  mHandShadow.style.transform = "rotate(" + mAngle + "deg)";
 
   let msHours = (time.getHours() * 3600000) + msMinutes;
   let hAngle = msHours * 0.00000833;
   hHand.style.transform = "rotate(" + hAngle + "deg)";
+  hHandShadow.style.transform = "rotate(" + hAngle + "deg)";
 
   let hour = time.getHours().toString(6).padStart(2, 0);
   let minute = time.getMinutes().toString(6).padStart(3, 0);

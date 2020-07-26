@@ -1,5 +1,10 @@
 body {
+  display: flex;
   background-color: black;
+}
+
+#clock {
+  margin: auto;
 }
 
 #svgClock {
@@ -41,7 +46,7 @@ body {
   cursor: default;
   /*filter: drop-shadow(0 0 .5vh aqua);
   /*filter: drop-shadow(0 0 .5vh hsla(0, 0%, 0%, 0));*/
-  transition: filter 500ms;
+  transition: filter 250ms;
 }
 
 .numbers:hover {
@@ -49,27 +54,57 @@ body {
 }
 
 .hands {
-  fill: aqua;
+  rx: .5vh;
+  ry: .5vh;
   filter: drop-shadow(0 .5vh .05vh black);
   transform-origin: 45vh 45vh;
 }
 
 #sHand {
   x: 44.5vh;
-  y: 14vh;
+  y: 13vh;
   height: 30vh;
   width: 1vh;
 }
 
 #mHand {
   x: 44.25vh;
-  y: 24vh;
+  y: 23vh;
   height: 20vh;
   width: 1.5vh;
 }
 
 #hHand {
   x: 44vh;
+  y: 29vh;
+  height: 14vh;
+  width: 2vh;
+}
+
+.handShadows {
+  rx: .5vh;
+  ry: .5vh;
+  fill: black;
+  transform-origin: 46vh 45vh;
+  filter: url("#blur");
+}
+
+#sHandShadow {
+  x: 45.5vh;
+  y: 14vh;
+  height: 30vh;
+  width: 1vh;
+}
+
+#mHandShadow {
+  x: 45.25vh;
+  y: 24vh;
+  height: 20vh;
+  width: 1.5vh;
+}
+
+#hHandShadow {
+  x: 46vh;
   y: 30vh;
   height: 14vh;
   width: 2vh;
@@ -80,7 +115,7 @@ body {
   font-weight: bold;
   font-size: 6vh;
   stroke: aqua;
-  transform: translate(27vh, 55vh);
-  filter: drop-shadow(0 0 .5vh aqua);
+  transform: translate(22.5vh, 55vh);
+  filter: drop-shadow(0 0 .5vh aqua) drop-shadow(.5vh .5vh .5vh black);
   cursor: default;
 }
