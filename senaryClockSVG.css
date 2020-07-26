@@ -116,6 +116,6 @@ body {
   font-size: 6vh;
   stroke: aqua;
   transform: translate(22.5vh, 55vh);
-  filter: drop-shadow(0 0 .5vh aqua) drop-shadow(.5vh .5vh .5vh black);
+  filter: drop-shadow(0 0 .5vh aqua) drop-shadow(.75vh .75vh .2vh black);
   cursor: default;
 }
