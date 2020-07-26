@@ -24,9 +24,17 @@ I'm glad you asked. It's thanks to the magic of refreshing the position of the h
 
 ## Updates
 
+### 2020.07.26 (SVG)
+
+I have fixed the shadows and put gradients on stuff! I've also played with the colors and centered the clock in the browser. I still feel like it needs some features but I don't want to sully the clean design of it. We'll see... I can't think of anything else to do with it right now but I like looking at it.
+
 ### 2020.07.25 (SVG)
 
-I taught myself SVG! At least a bit of it. Canvas was fun and it was something I knew but SVG felt like it had more room to grow. The thing that bothers me the most right now are the shadows on the hands. The problem is they rotate along with the hands and they should always fall in the same direction relative to the clock, not relative to the rotation of the hand. The issue is that instead of drawing the hands like I did in Canvas with sine and cosine derived coordinates, I'm now rotating the SVG element. The solution is going to be drawing the hands twice and offsetting the second set down and to the right, then applying a blur. But first I'm going to try to get gradients...
+I taught myself SVG! At least a bit of it. Canvas was fun and it was something I knew but SVG felt like it had more room to grow. 
+
+The thing that bothers me the most right now are the shadows on the hands. The problem is they rotate along with the hands and they should always fall in the same direction relative to the clock, not relative to the rotation of the hand. The issue is that instead of drawing the hands like I did in Canvas with sine and cosine derived coordinates, I'm now rotating the SVG element. The solution is going to be drawing the hands twice and offsetting the second set down and to the right, then applying a blur. 
+
+But first I'm going to try to get gradients...
 
 ### 2020.07.23 (Canvas)
 
@@ -36,13 +44,15 @@ So I think I'm going to try and do it in SVG, it's more interactive and I don't 
 
 
 
-##### This is stuff I want to remember as I update this page
+.
+.
+.
+.
+.
+.
+.
+.
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
 
 **Bold** and _Italic_ and `Code` text
 
