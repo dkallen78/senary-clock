@@ -1,4 +1,6 @@
-## [Senary Clock!](https://dkallen78.github.io/senary-clock/senaryClock.html)
+## [Senary Clock Canvas!](https://dkallen78.github.io/senary-clock/senaryClock.html)
+
+## [Senary Clock SVG!](https://dkallen78.github.io/senary-clock/senaryClockSVG.html)
 
 This is the clock no one asked for!
 
@@ -22,7 +24,11 @@ I'm glad you asked. It's thanks to the magic of refreshing the position of the h
 
 ## Updates
 
-### 2020.07.23
+### 2020.07.25 (SVG)
+
+I taught myself SVG! At least a bit of it. Canvas was fun and it was something I knew but SVG felt like it had more room to grow. The thing that bothers me the most right now are the shadows on the hands. The problem is they rotate along with the hands and they should always fall in the same direction relative to the clock, not relative to the rotation of the hand. The issue is that instead of drawing the hands like I did in Canvas with sine and cosine derived coordinates, I'm now rotating the SVG element. The solution is going to be drawing the hands twice and offsetting the second set down and to the right, then applying a blur. But first I'm going to try to get gradients...
+
+### 2020.07.23 (Canvas)
 
 I made the thing! Then I made it a bit better by making it glow and giving it some flicker. I don't know what's next. Someone said an alarm...
 
