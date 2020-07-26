@@ -1,0 +1,75 @@
+body {
+  background-color: black;
+}
+
+#svgClock {
+  height: 90vh;
+  width: 90vh;
+}
+
+.circle {
+  cx: 45vh;
+  cy: 45vh;
+}
+
+#rim {
+  r: 44vh;
+}
+
+#center {
+  r: 1.5vh;
+}
+
+.ellipse {
+  cx: 45vh;
+  cy: 15vh;
+  rx: 1vh;
+  ry: 3vh;
+  stroke: fuchsia;
+  stroke-width: 2;
+  fill: fuchsia;
+  transform-origin: 45vh 45vh;
+}
+
+.numbers {
+  font-size: 6.5vh;
+  font-weight: 900;
+  font-family: monospace;
+  fill: none;
+  stroke: aqua;
+  transform-origin: 45vh 45vh;
+  cursor: default;
+  filter: drop-shadow(0 0 .5vh hsla(0, 0%, 0%, 0));
+  transition: filter 500ms;
+}
+
+.numbers:hover {
+  filter: drop-shadow(0 0 .5vh aqua);
+}
+
+.hands {
+  fill: aqua;
+  filter: drop-shadow(0 .5vh .05vh black);
+  transform-origin: 45vh 45vh;
+}
+
+#sHand {
+  x: 44.5vh;
+  y: 14vh;
+  height: 30vh;
+  width: 1vh;
+}
+
+#mHand {
+  x: 44.25vh;
+  y: 24vh;
+  height: 20vh;
+  width: 1.5vh;
+}
+
+#hHand {
+  x: 44vh;
+  y: 30vh;
+  height: 14vh;
+  width: 2vh;
+}
