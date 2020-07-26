@@ -28,6 +28,10 @@ I'm glad you asked. It's thanks to the magic of refreshing the position of the h
 
 I have fixed the shadows and put gradients on stuff! I've also played with the colors and centered the clock in the browser. I still feel like it needs some features but I don't want to sully the clean design of it. We'll see... I can't think of anything else to do with it right now but I like looking at it.
 
+#### more...
+
+I'm done for the morning (it's 03:36, or 03:100) and I think I can sleep. I put some comments in the code so I can figure out what I did tomorrow.
+
 ### 2020.07.25 (SVG)
 
 I taught myself SVG! At least a bit of it. Canvas was fun and it was something I knew but SVG felt like it had more room to grow. 
