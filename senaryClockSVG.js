@@ -37,6 +37,19 @@ function makeCenter(parent) {
 }
 
 function makeEllipses(parent, number) {
+
+  let defs = document.createElementNS(svgNS, "defs");
+
+  let gradient = document.createElementNS(svgNS, "radialGradient");
+  gradient.id = "ellipseGradient";
+
+  addStop(gradient, "0%", "violet");
+  addStop(gradient, "50%", "orchid");
+  addStop(gradient, "100%", "fuchsia");
+
+  defs.appendChild(gradient);
+  parent.appendChild(defs);
+
   let angle = 0;
   let change = 360 / number;
 
@@ -48,6 +61,8 @@ function makeEllipses(parent, number) {
 
     angle += change;
   }
+
+
 }
 
 function makeNumbers(parent, number) {
@@ -64,13 +79,40 @@ function makeNumbers(parent, number) {
     numero.style.transform = "rotate(" + angle + "deg) translate(41vh, 8vh)";
     parent.appendChild(numero);
   }
+
+  setTimeout(function() {
+    let time = new Date();
+    illuminateHour(time.getHours());
+  }, 100);
+
 }
 
-function makeHand(id) {
+function makeHand(parent, id) {
   let hand = document.createElementNS(svgNS, "rect");
   hand.id = id;
   hand.classList.add("hands");
+
+  let defs = document.createElementNS(svgNS, "defs");
+  let gradient = document.createElementNS(svgNS, "linearGradient");
+  gradient.id = "handGradient";
+  gradient.setAttribute("gradientTransform", "rotate(90)");
+
+  addStop(gradient, "0%", "dodgerBlue");
+  addStop(gradient, "100%", "aqua");
+
+  defs.appendChild(gradient);
+  parent.appendChild(defs);
+  parent.appendChild(hand);
+
+  hand.style.fill = "url('#handGradient')";
   return hand;
+}
+
+function addStop(parent, offset, color) {
+  let stop = document.createElementNS(svgNS, "stop");
+  stop.setAttribute("offset", offset);
+  stop.setAttribute("stop-color", color);
+  parent.appendChild(stop);
 }
 
 function flicker() {
@@ -82,11 +124,18 @@ function flicker() {
   for (let i = numbers.length - 1; i >= 0; i--) {
     numbers[i].parentNode.removeChild(numbers[i]);
   }
-  numbers = document.getElementsByClassName("numbers");
 
   setTimeout(function() {
     makeNumbers(svg, 24);
   }, getRandomNumber(0, 100));
+}
+
+function illuminateHour(hour) {
+  let newHour = ((hour + 24) - 1) % 24;
+  let oldHour = ((hour + 24) - 2) % 24;
+  let numbers = document.getElementsByClassName("numbers");
+  numbers[oldHour].style.filter = "";
+  numbers[newHour].style.filter = "drop-shadow(0 0 .5vh aqua)";
 }
 
 //
@@ -107,24 +156,27 @@ svg.appendChild(circle);
 makeEllipses(svg, 24);
 makeNumbers(svg, 24);
 
-let sHand = makeHand("sHand");
-svg.appendChild(sHand);
+let sHand = makeHand(svg, "sHand");
 
-let mHand = makeHand("mHand");
-svg.appendChild(mHand);
+let mHand = makeHand(svg, "mHand");
 
-let hHand = makeHand("hHand");
-svg.appendChild(hHand);
+let hHand = makeHand(svg, "hHand");
 
 makeCenter(svg);
 
 clock.appendChild(svg);
 
 let numbers = document.getElementsByClassName("numbers");
-console.log(numbers);
+let digitalTime = document.createElementNS(svgNS, "text");
+digitalTime.setAttribute("textLength", "40%");
+svg.appendChild(digitalTime);
 
 //
 //Will update the clock face at 100Hz
+
+
+let hourCheck = null;
+
 let refreshInterval = setInterval(function() {
   if (getRandomNumber(0, 200) === 1) {
     flicker();
@@ -143,5 +195,18 @@ let refreshInterval = setInterval(function() {
   let msHours = (time.getHours() * 3600000) + msMinutes;
   let hAngle = msHours * 0.00000833;
   hHand.style.transform = "rotate(" + hAngle + "deg)";
+
+  let hour = time.getHours().toString(6).padStart(2, 0);
+  let minute = time.getMinutes().toString(6).padStart(3, 0);
+  let second = time.getSeconds().toString(6).padStart(3, 0);
+  let timeString = hour + ":" + minute + ":" + second;
+
+  digitalTime.innerHTML = timeString;
+  digitalTime.id = "digitalTime";
+
+  if (hour !== hourCheck) {
+    hourCheck = hour;
+    illuminateHour(time.getHours());
+  }
 
 }, 10);

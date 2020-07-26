@@ -23,11 +23,12 @@ body {
 .ellipse {
   cx: 45vh;
   cy: 15vh;
-  rx: 1vh;
-  ry: 3vh;
+  rx: .65vh;
+  ry: 2.5vh;
   stroke: fuchsia;
   stroke-width: 2;
-  fill: fuchsia;
+  fill: url(#ellipseGradient);
+  filter: drop-shadow(0 0 .5vh fuchsia);
   transform-origin: 45vh 45vh;
 }
 
@@ -35,16 +36,16 @@ body {
   font-size: 6.5vh;
   font-weight: 900;
   font-family: monospace;
-  fill: none;
   stroke: aqua;
   transform-origin: 45vh 45vh;
   cursor: default;
-  filter: drop-shadow(0 0 .5vh hsla(0, 0%, 0%, 0));
+  /*filter: drop-shadow(0 0 .5vh aqua);
+  /*filter: drop-shadow(0 0 .5vh hsla(0, 0%, 0%, 0));*/
   transition: filter 500ms;
 }
 
 .numbers:hover {
-  filter: drop-shadow(0 0 .5vh aqua);
+
 }
 
 .hands {
@@ -72,4 +73,14 @@ body {
   y: 30vh;
   height: 14vh;
   width: 2vh;
+}
+
+#digitalTime {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 6vh;
+  stroke: aqua;
+  transform: translate(27vh, 55vh);
+  filter: drop-shadow(0 0 .5vh aqua);
+  cursor: default;
 }
