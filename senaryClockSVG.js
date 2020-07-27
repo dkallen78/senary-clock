@@ -262,7 +262,7 @@ let refreshInterval = setInterval(function() {
   //this cycle
   if ((getRandomNumber(0, 200) === 1) && !working) {
     working = true;
-    //flicker();
+    flicker();
   }
 
   let time = new Date();
