@@ -11,7 +11,7 @@ const getRandomNumber = function(floor, ceiling) {
 
 function makeSVG(type) {
   let svg = document.createElementNS("http://www.w3.org/2000/svg", type);
-  if (arguments.length > 0) {svg.id = arguments[1]};
+  if (arguments.length > 1) {svg.id = arguments[1]};
   return svg;
 }
 
@@ -87,7 +87,9 @@ function makeNumbers(parent, number) {
     let numero = makeSVG("text");
     numero.textContent = digit.toString(6).padStart(2, 0);
     numero.classList.add("numbers");
+
     numero.style.transform = "rotate(" + angle + "deg) translate(41vh, 8vh)";
+
     parent.appendChild(numero);
   }
 
@@ -148,11 +150,15 @@ function flicker() {
   //Causes a flicker effect in the clock numbers        //
   //----------------------------------------------------//
 
+  //
+  //Selects all the number elements and removes them
   let numbers = document.getElementsByClassName("numbers");
   for (let i = numbers.length - 1; i >= 0; i--) {
     numbers[i].parentNode.removeChild(numbers[i]);
   }
 
+  //
+  //Puts the numbers back after a random delay
   setTimeout(function() {
     makeNumbers(svg, 24);
     working = false;
@@ -165,6 +171,8 @@ function illuminateHour(hour) {
   //integer-> hour: the current hour from 0-23          //
   //----------------------------------------------------//
 
+  //
+  //Determines which hour to dim and which hour to illuminate
   let newHour = ((hour + 24) - 1) % 24;
   let oldHour = ((hour + 24) - 2) % 24;
   let numbers = document.getElementsByClassName("numbers");
@@ -254,7 +262,7 @@ let refreshInterval = setInterval(function() {
   //this cycle
   if ((getRandomNumber(0, 200) === 1) && !working) {
     working = true;
-    flicker();
+    //flicker();
   }
 
   let time = new Date();
