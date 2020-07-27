@@ -14,9 +14,9 @@ Because clocks run on the numbers 60, 24, and 12, and 6 is a factor of all of th
 
 ### How to Read Senary Numbers?
 
-The numbers we're used to are in base-10, that is, every digit of our number has nine possible numbers: 0 - 9. The position of the digits determines its value. In a base-10 (decimal) system the furthest right digit is multiplied by 10⁰ to determine its value. The digit to the left of that is multiplied by 10¹, the next by 10² and so on. So the decimal number **234** is equal to (**2** × 10²) + (**3** × 10¹) + (**4** × 10⁰) → (**2** × 100) + (**3** × 10) + (**4** × 1) → 200 + 30 + 4 → 234. 
+The numbers we're used to are in base-10, that is, every digit of our number has nine possible numbers: 0 - 9. The position of the digits determines its value. In a base-10 (decimal) system the furthest right digit is multiplied by 10⁰ to determine its value. The digit to the left of that is multiplied by 10¹, the next by 10² and so on. So the number (**234**)₁₀ is equal to (**2** × 10²) + (**3** × 10¹) + (**4** × 10⁰) → (**2** × 100) + (**3** × 10) + (**4** × 1) → 200 + 30 + 4 → (234)₁₀. 
 
-In a senary system there are only 6 possible digits for our place values: 0 - 5. In this system the far right digit is multiplied by 6⁰ to determine its value. The next digits are determined by multiplying them by 6¹, 6², and so on. So to determine the value of the senary number 234 we apply the same process as we did with the decimal numbers, only now multiplying by powers of 6. **234** is equal to (**2** × 6²) + (**3** × 6¹) + (**4** × 6⁰) → (**2** × 36) + (**3** × 6) + (**4** × 1) → 72 + 18 + 4 → 94.  
+In a senary system there are only 6 possible digits for our place values: 0 - 5. In this system the far right digit is multiplied by 6⁰ to determine its value. The next digits are determined by multiplying them by 6¹, 6², and so on. So to determine the value of the senary number 234 we apply the same process as we did with the decimal numbers, only now multiplying by powers of 6. (**234**)₆ is equal to (**2** × 6²) + (**3** × 6¹) + (**4** × 6⁰) → (**2** × 36) + (**3** × 6) + (**4** × 1) → 72 + 18 + 4 → (94)₁₀.  
 
 ### Why is it smoother than butter?
 
@@ -38,7 +38,7 @@ or in JavaScript:
 
 `x = (origin + (distance * Math.cos(radians * Math.PI)))`
 
-To determine the proper angle in radians for the hands I needed to know the number of milliseconds it took for that hand to make a complete rotation around the face of the clock. In the case of the second hand I knew that it took 60 seconds to go around so that was 60 seconds · 1,000 ms → 60,000 ms per minute. From there we divide the 2 radians in a circle into 60,000 parts to get 0.000033 radians per ms. 
+To determine the proper angle in radians for the hands I needed to know the number of milliseconds it took for that hand to make a complete rotation around the face of the clock. In the case of the second hand I knew that it took 60 seconds to go around so that was 60 seconds · 1,000 ms → 60,000 ms per minute. From there we divide the 2 radians in a circle into 60,000 parts to get 0.000033 radians per ms.
 
 To rotate the element a set number of degrees is a bit easier. To begin with, no complex x and y coordinates need to be calculated, only the initial values. To determine the number of degrees to rotate the second hand, I had to break up the 360° into 60,000 parts to determine how much to rotate it each millisecond: 0.006°
 
