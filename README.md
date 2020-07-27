@@ -22,6 +22,30 @@ In a senary system there are only 6 possible digits for our place values: 0 - 6.
 
 I'm glad you asked. It's thanks to the magic of refreshing the position of the hands 100 times a second. I calculate the position of the hands down to the 10 millionth of a pixel just for funsies! 
 
+### Canvas vs SVG, two different approaches to movement
+
+The first verson I made was with Canvas. With the canvas clock I redrew the hands every 10 milliseconds, calculating their angle using radians and sine/cosine. This was a pain in the ass to figure out the math but I lifted most of it out of a previous project I had done. The tricky part was dealing with the fact that canvas draws its circles clockwise from the far right point - the 3 o'clock position, not the 12 o'clock position so all my radian values had to be offset 1.5 radians. 
+
+With the SVG version I only "drew" the hands one time and would rotate them via the transform property. So instead of dealing with radians, with SVG I manipulate the hands via degrees. The big bennefit to doing things with SVG was it allowed me to be more responsive with the clock. Maybe I could have done that with Canvas, but I'm not sure... SVG also lets me do rounded corners. What I didn't like from SVG was how incompatible the text elements were with vh and vw units.
+
+### Math!
+
+Calculating the movement based on sine and cosine the first time was a bit of a pain for me. In school I didn't learn radians so it was very new and confusing but the basically the cosine of an angle will tell you where on the coordinate plane the x value for that point on the circle is. Sine will tell you where the y value is.
+
+`origin + distanceFromOrigin · cos(θ · π)`
+
+or in JavaScript:
+
+`(origin + (distance * Math.cos(radians * Math.PI)))`
+
+To determine the proper angle in radians for the hands I needed to know the number of milliseconds it took for that hand to make a complete rotation around the face of the clock. In the case of the second hand I knew that it took 60 seconds to go around so that was 60 seconds · 1,000 ms → 60,000 ms per minute. From there we divide the 2 radians in a circle into 60,000 parts to get 0.000033 radians per ms rotation. 
+
+To rotate the element a set number of degrees is a bit easier. To begin with, no complex x and y coordinates need to be calculated, only the initial values. To determine the number of degrees to rotate the second had, I had to break up the 360° into 60,000 parts to determine how much to rotate it each millisecond: 0.006°
+
+### Animation!
+
+I didn't actually refresh my clock every millisecond, that's silly. I did it every 10 milliseconds. The JavaScript date object is pretty good at giving you time information. To make sure the second hand was in the right place after every refresh I had to determine exactly which of the 60 seconds it was and which of the 1,000 milliseconds it was. Combining these two data I could calculate which of the 60,000 milliseconds of the current minute it was and draw or rotate the second hand accordingly.
+
 ## Updates
 
 ### 2020.07.26 (SVG)
